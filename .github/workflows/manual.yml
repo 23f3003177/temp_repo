@@ -19,6 +19,9 @@ jobs:
     steps:
       - name: 23f3003177@ds.study.iitm.ac.in
         run: echo "Hello, world!"
+
+      - name: Checkout repository
+        uses: actions/checkout@v4
         
       - name: Run temp
         run: | # python
