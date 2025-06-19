@@ -19,13 +19,10 @@ jobs:
     steps:
       - name: 23f3003177@ds.study.iitm.ac.in
         run: echo "Hello, world!"
-
-      - name: Install uv
-        uses: astral-sh/setup-uv@v5
-
-      - name: Run scraper
+        
+      - name: Run temp
         run: | # python
-          uv run python temp.py
+          python temp.py
       
       - name: Commit and push changes
         run: |
