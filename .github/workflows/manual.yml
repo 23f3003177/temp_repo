@@ -5,11 +5,27 @@ name: Manual workflow
 # Controls when the action will run. Workflow runs when manually triggered using the UI
 # or API.
 on:
+  schedule:
+    # Runs at 00:00 UTC every day
+    - cron: "0 0 * * *"
   workflow_dispatch:
 
 jobs:
   test:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      
     steps:
       - name: 23f3003177@ds.study.iitm.ac.in
         run: echo "Hello, world!"
+
+      
+      - name: Commit and push changes
+        run: |
+          git config --local user.email "github-actions[bot]@23f3003177@ds.study.iitm.ac.in"
+          git config --local user.name "github-actions[bot]"
+          git add *.txt
+          git commit -m "Added new entry" || exit 0
+          git push
+
